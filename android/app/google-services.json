@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1005874615921",
+    "project_id": "marketplace-5cc2f",
+    "storage_bucket": "marketplace-5cc2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005874615921:android:a29d18877fcce86076edd0",
+        "android_client_info": {
+          "package_name": "com.example.shopdroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005874615921-ngjmgboog2edllhlr8auuo1kunofe73o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk6ikvVM0S5-hGHeYz0jqq0FfURDfAppc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005874615921-ngjmgboog2edllhlr8auuo1kunofe73o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1005874615921-54qhmekns7cm08a9k1s5gdhe87kb55ef.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shopdroid"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
