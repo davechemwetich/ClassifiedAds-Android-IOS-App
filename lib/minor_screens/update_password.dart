@@ -29,10 +29,10 @@ class _UpdatePasswordState extends State<UpdatePassword> {
     return ScaffoldMessenger(
       key: scaffoldKey,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.grey,
             title: const AppBarTitle(title: 'Change Password'),
             leading: const AppBarBackButton()),
         body: SafeArea(

@@ -14,7 +14,8 @@ class SliderBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 40),
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(50)),
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50)),
           child: RotatedBox(
             quarterTurns: 3,
             child: Row(

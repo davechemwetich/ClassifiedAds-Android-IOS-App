@@ -3,9 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopdroid/widgets/appbar_widgets.dart';
 
-class Balance extends StatelessWidget {
+class Balance extends StatefulWidget {
   const Balance({Key? key}) : super(key: key);
 
+  @override
+  State<Balance> createState() => _BalanceState();
+}
+
+class _BalanceState extends State<Balance> {
+  String value = "10";
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -22,142 +28,93 @@ class Balance extends StatelessWidget {
             );
           }
 
-          double totalPrice = 0.0;
-          for (var item in snapshot.data!.docs) {
-            totalPrice += item['orderqty'] * item['orderprice'];
-          }
-
           return Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.white,
-              leading: const AppBarBackButton(),
-              title: const AppBarTitle(
-                title: 'Balance',
+              appBar: AppBar(
+                elevation: 0,
+                backgroundColor: Colors.grey,
+                leading: const AppBarBackButton(),
+                title: const AppBarTitle(
+                  title: '',
+                ),
+                centerTitle: true,
               ),
-            ),
-            body: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BalanceModel(
-                      label: 'total balance',
-                      value: totalPrice,
-                      decimal: 2,
+              body: Center(
+                  child: Column(children: [
+                Container(
+                  height: 130,
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Colors.black,
+                        Colors.black,
+                        Colors.black26,
+                        Colors.lightBlue,
+                        Colors.lightBlue,
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
                     ),
-                    const SizedBox(height: 100),
-                    Container(
-                      height: 45,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                          color: Colors.pink,
-                          borderRadius: BorderRadius.circular(25)),
-                      child: MaterialButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Get My Money !',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20, top: 20),
+                            child: Text(
+                              "Refer To Earn Balance",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 22),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "ksh $value",
+                            style: const TextStyle(
+                                color: Colors.green, fontSize: 25),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            height: 55,
+                            width: 55,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomCenter,
+                                colors: [Colors.white60, Colors.white10],
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                              border:
+                                  Border.all(width: 2, color: Colors.white60),
+                            ),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              icon: const Icon(
+                                Icons.verified_user_rounded,
+                                size: 37,
+                                color: Colors.blue,
+                              ),
+                              onPressed: () {},
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 60),
-                  ]),
-            ),
-          );
+                    ],
+                  ),
+                ),
+              ])));
         });
-  }
-}
-
-class BalanceModel extends StatelessWidget {
-  final String label;
-  final dynamic value;
-  final int decimal;
-  const BalanceModel(
-      {Key? key,
-      required this.label,
-      required this.value,
-      required this.decimal})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 60,
-          width: MediaQuery.of(context).size.width * 0.55,
-          decoration: const BoxDecoration(
-              color: Colors.blueGrey,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25), topRight: Radius.circular(25))),
-          child: Center(
-              child: Text(
-            label.toUpperCase(),
-            style: const TextStyle(color: Colors.white, fontSize: 20),
-          )),
-        ),
-        Container(
-          height: 90,
-          width: MediaQuery.of(context).size.width * 0.7,
-          decoration: BoxDecoration(
-              color: Colors.blueGrey.shade100,
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25))),
-          child: AnimatedCounter(
-            count: value,
-            decimal: decimal,
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class AnimatedCounter extends StatefulWidget {
-  final int decimal;
-  final dynamic count;
-  const AnimatedCounter({Key? key, required this.count, required this.decimal})
-      : super(key: key);
-
-  @override
-  State<AnimatedCounter> createState() => _AnimatedCounterState();
-}
-
-class _AnimatedCounterState extends State<AnimatedCounter>
-    with TickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation _animation;
-
-  @override
-  void initState() {
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    _animation = _controller;
-    setState(() {
-      _animation = Tween(begin: _animation.value, end: widget.count)
-          .animate(_controller);
-    });
-    _controller.forward();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Center(
-            child: Text(
-          _animation.value.toStringAsFixed(widget.decimal),
-          style: const TextStyle(
-              color: Colors.pink,
-              fontSize: 40,
-              fontFamily: 'Acme',
-              letterSpacing: 2,
-              fontWeight: FontWeight.bold),
-        ));
-      },
-    );
   }
 }

@@ -33,10 +33,10 @@ class _SubCategProductsState extends State<SubCategProducts> {
         .where('subcateg', isEqualTo: widget.subcategName)
         .snapshots();
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         leading: widget.fromOnBoarding == true
             ? IconButton(
                 onPressed: () {

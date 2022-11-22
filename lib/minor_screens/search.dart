@@ -15,14 +15,14 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new,
-            color: Colors.black,
+            color: Colors.grey,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -30,7 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         title: CupertinoSearchTextField(
           autofocus: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.grey,
           onChanged: (value) {
             setState(() {
               searchInput = value;

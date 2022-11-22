@@ -14,7 +14,7 @@ const textColors = [
   Colors.blueAccent,
   Colors.green,
   Colors.purple,
-  Colors.teal
+  Colors.pink
 ];
 
 const textStyle =

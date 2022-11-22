@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopdroid/main_screens/category.dart';
+// import 'package:shopdroid/main_screens/dashb.dart';
 import 'package:shopdroid/main_screens/dashboard.dart';
 import 'package:shopdroid/main_screens/home.dart';
 import 'package:shopdroid/main_screens/stores.dart';
@@ -24,6 +25,7 @@ class _SupplierHomeScreenState extends State<SupplierHomeScreen> {
     CategoryScreen(),
     StoresScreen(),
     DashboardScreen(),
+    // DashTest(),
     UploadProductScreen(),
   ];
   @override

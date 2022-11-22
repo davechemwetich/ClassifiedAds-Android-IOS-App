@@ -60,17 +60,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
-          return /* Text("Full Name: ${data['full_name']} ${data['last_name']}"); */
+          return
+              /* Text("Full Name: ${data['full_name']} ${data['last_name']}"); */
 
               Scaffold(
-            backgroundColor: Colors.grey.shade300,
+            backgroundColor: Colors.transparent,
             body: Stack(
               children: [
                 Container(
                   height: 230,
-                  // decoration: const BoxDecoration(
-                  //     gradient: LinearGradient(
-                  //         colors: [Colors.yellow, Colors.brown])),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Colors.black,
+                        Colors.black,
+                        Colors.black26,
+                        Colors.lightBlue,
+                        Colors.lightBlue,
+                      ],
+                    ),
+                  ),
                 ),
                 CustomScrollView(
                   slivers: [
@@ -78,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       centerTitle: true,
                       pinned: true,
                       elevation: 0,
-                      backgroundColor: Colors.white,
+                      backgroundColor: Colors.transparent,
                       expandedHeight: 140,
                       flexibleSpace: LayoutBuilder(
                         builder: (context, constraints) {
@@ -96,10 +106,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               height: 200,
                               width: double.infinity,
                               decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        "images/inapp/version 1.0.0+1.png"),
-                                    fit: BoxFit.cover),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.white10,
+                                    Colors.black26,
+                                    Colors.greenAccent,
+                                    Colors.greenAccent,
+                                    Colors.pinkAccent,
+                                  ],
+                                ),
+                                // image: DecorationImage(
+                                //     image: AssetImage(
+                                //         "images/inapp/version 1.0.0+1.png"),
+                                //     fit: BoxFit.cover),
                               ),
                               child: Padding(
                                 padding:
@@ -121,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       padding: const EdgeInsets.only(left: 25),
                                       child: Text(
                                         data['name'] == ''
-                                            ? 'Guest'
+                                            ? 'Welcome Guest'
                                             : data['name'],
                                         style: const TextStyle(
                                             fontSize: 14,
@@ -218,15 +237,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Container(
-                            color: Colors.grey.shade300,
+                            color: Colors.transparent,
                             child: Column(
                               children: [
-                                // const SizedBox(
-                                //   height: 150,
-                                //   child: Image(
-                                //       image: AssetImage(
-                                //           'images/inapp/coverimage.png')),
-                                // ),
+                                const SizedBox(
+                                  height: 150,
+                                  child: Image(
+                                      image: AssetImage(
+                                          'images/inapp/coverimage.png')),
+                                ),
                                 const ProfileHeaderLabel(
                                   headerLabel: '  Account Info.  ',
                                 ),
@@ -235,7 +254,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Container(
                                     height: 260,
                                     decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: Colors.transparent,
                                         borderRadius:
                                             BorderRadius.circular(16)),
                                     child: Column(
@@ -276,14 +295,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                   ),
                                 ),
-                                const ProfileHeaderLabel(
-                                    headerLabel: '  Account Settings  '),
+                                // const ProfileHeaderLabel(
+                                //     headerLabel: '  Account Settings  '),
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Container(
                                     height: 200,
                                     decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: Colors.transparent,
                                         borderRadius:
                                             BorderRadius.circular(16)),
                                     child: Column(
@@ -336,6 +355,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 });
                                           },
                                         ),
+                                        const YellowDivider(),
                                       ],
                                     ),
                                   ),

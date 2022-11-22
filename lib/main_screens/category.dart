@@ -51,7 +51,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         title: const FakeSearch(),
       ),
       body: Stack(
@@ -73,13 +73,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
             return GestureDetector(
               onTap: () {
                 _pageController.animateToPage(index,
-                    duration: const Duration(milliseconds: 100),
+                    duration: const Duration(milliseconds: 1000),
                     curve: Curves.bounceInOut);
               },
               child: Container(
                 color: items[index].isSelected == true
-                    ? Colors.white
-                    : Colors.white,
+                    ? Colors.transparent
+                    : Colors.transparent,
                 height: 100,
                 child: Center(
                   child: Text(items[index].label),
@@ -94,7 +94,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Container(
       height: size.height * 0.8,
       width: size.width * 0.8,
-      color: Colors.white,
+      color: Colors.transparent,
       child: PageView(
         controller: _pageController,
         onPageChanged: (value) {
